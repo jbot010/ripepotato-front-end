@@ -1,5 +1,5 @@
 // npm modules
-import { ButtonHTMLAttributes, ReactHTMLElement, useState } from "react"
+import { ReactHTMLElement, useState } from "react"
 
 // css
 
@@ -11,15 +11,13 @@ interface NewMovieProps {
   handleAddMovie: (formData: Movie) => Promise<void>;
 }
 
+const defaultFormData = { 
+  title:'', 
+  rtScore: 0,
+}
+
 const NewMovie = (props: NewMovieProps) => {
-  const [formData, setFormData] = useState<movieFormData>({
-    title:'',
-    rtScore: 0,
-    createdById: 0,
-    // id: 0,
-    // createdAt: '',
-    // updatedAt: '',
-  })
+  const [formData, setFormData] = useState<movieFormData>(defaultFormData)
 
   // create handleChange
   const handleChange = (evt) => {
@@ -27,13 +25,12 @@ const NewMovie = (props: NewMovieProps) => {
     setFormData({ ...formData, [evt.target.name]: evt.target.value })
   }
 
-
-  // create handleSubmit
   const handleSubmit = (evt: React.FormEvent<HTMLElement>) => {
+    console.log(formData)
     evt.preventDefault()
-    props.handleAddMovie(formData)
+    props.handleAddMovie(formData).then(() => setFormData(defaultFormData)
+    )
   }
-  // use console.log
 
   return (
     <main className="new">

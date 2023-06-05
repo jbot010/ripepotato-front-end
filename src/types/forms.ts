@@ -3,7 +3,7 @@
 export interface movieFormData {
   title: string;
   rtScore: number;
-  createdById: number;
+  // createdById: number;
 }
 
 /* ---------===== auth forms =====--------- */
