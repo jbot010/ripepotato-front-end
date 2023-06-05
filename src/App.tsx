@@ -7,6 +7,7 @@ import Signup from './pages/Signup/Signup'
 import Login from './pages/Login/Login'
 import Landing from './pages/Landing/Landing'
 import Profiles from './pages/Profiles/Profiles'
+import NewMovie from './pages/NewMovies/NewMovies'
 import Movies from './pages/Movies/Movies'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 
@@ -24,6 +25,7 @@ import './App.css'
 
 // types
 import { User, Profile, Movie } from './types/models'
+import { movieFormData } from './types/forms'
 
 function App(): JSX.Element {
   const [user, setUser] = useState<User | null>(authService.getUser())
@@ -57,6 +59,16 @@ function App(): JSX.Element {
     user ? fetchMovies() : setMovies([])
   }, [user])
 
+  const handleAddMovie = async (formData: Movie) => {
+    try {
+      const newMovie = await movieService.create(formData)
+      setMovies([newMovie, ...movies])
+      // navigate('/new')
+    } catch (error) {
+      console.log(error)      
+    }
+  }
+
 
   const handleLogout = (): void => {
     authService.logout()
@@ -79,6 +91,16 @@ function App(): JSX.Element {
             <ProtectedRoute user={user}>
               <Profiles 
                 profiles={profiles}
+              />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path='/new'
+          element={
+            <ProtectedRoute user={user}>
+              <NewMovie
+                handleAddMovie={handleAddMovie}
               />
             </ProtectedRoute>
           }

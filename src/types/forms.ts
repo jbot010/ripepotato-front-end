@@ -1,6 +1,10 @@
 /* ---------==== custom forms ====--------- */
 
-
+export interface movieFormData {
+  title: string;
+  rtScore: number;
+  createdById: number;
+}
 
 /* ---------===== auth forms =====--------- */
 
