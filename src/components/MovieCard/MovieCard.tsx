@@ -3,19 +3,21 @@ import { Movie } from "../../types/models"
 
 interface MovieCardProps {
   movie: Movie
+  onEdit: (formData: Movie) => Promise<void>
 }
 
 const MovieCard = (props: MovieCardProps): JSX.Element => {
   const { movie } = props
 
   return (
-    <article>
+    <div>
       <img src="./cinema.png" alt={`${movie.title}'s avatar`} />
       <h1>{movie.title}</h1>
       <h2>{movie.rtScore}</h2>
-      <h3>EDIT BUTTON</h3>
-      <h3>DELETE BUTTON</h3>
-    </article>
+      <h2>RIPEPOTATO SCORE HERE</h2>
+      <button>EDIT</button>
+      <button>DELETE</button>
+    </div>
   )
 }
 

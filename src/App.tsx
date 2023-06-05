@@ -7,7 +7,6 @@ import Signup from './pages/Signup/Signup'
 import Login from './pages/Login/Login'
 import Landing from './pages/Landing/Landing'
 import Profiles from './pages/Profiles/Profiles'
-import NewMovie from './pages/NewMovies/NewMovies'
 import Movies from './pages/Movies/Movies'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 
@@ -18,14 +17,12 @@ import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
 // services
 import * as authService from './services/authService'
 import * as profileService from './services/profileService'
-import * as movieService from './services/movieService'
 
 // styles
 import './App.css'
 
 // types
-import { User, Profile, Movie } from './types/models'
-import { movieFormData } from './types/forms'
+import { User, Profile } from './types/models'
 
 function App(): JSX.Element {
   const [user, setUser] = useState<User | null>(authService.getUser())
@@ -44,31 +41,6 @@ function App(): JSX.Element {
     }
     user ? fetchProfiles() : setProfiles([])
   }, [user])
-
-  const [movies, setMovies] = useState<Movie[]>([])
-
-  useEffect((): void => {
-    const fetchMovies = async (): Promise<void> => {
-      try {
-        const movieData: Movie[] = await movieService.getAllMovies()
-        setMovies(movieData)
-      } catch (error) {
-        console.log(error)
-      }
-    }
-    user ? fetchMovies() : setMovies([])
-  }, [user])
-
-  const handleAddMovie = async (formData: Movie) => {
-    try {
-      const newMovie = await movieService.create(formData)
-      setMovies([newMovie, ...movies])
-      // navigate('/new')
-    } catch (error) {
-      console.log(error)      
-    }
-  }
-
 
   const handleLogout = (): void => {
     authService.logout()
@@ -96,21 +68,11 @@ function App(): JSX.Element {
           }
         />
         <Route
-          path='/new'
-          element={
-            <ProtectedRoute user={user}>
-              <NewMovie
-                handleAddMovie={handleAddMovie}
-              />
-            </ProtectedRoute>
-          }
-        />
-        <Route
           path="/movies"
           element={
             <ProtectedRoute user={user}>
               <Movies
-                movies={movies}
+                user={user}
               />
             </ProtectedRoute>
           }

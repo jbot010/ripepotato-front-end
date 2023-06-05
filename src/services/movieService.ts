@@ -26,5 +26,17 @@ async function create(formData: movieFormData): Promise<Movie> {
   return await res.json() as Movie
 }
 
+async function update(formData: movieFormData): Promise<Movie> {
+  const res = await fetch(BASE_URL, {
+    method: 'PUT',
+    headers: {
+      'Authorization': `Bearer ${tokenService.getToken()}`,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(formData)
+  })
+  return await res.json()
+}
 
-export { getAllMovies, create }
+
+export { getAllMovies, create, update }
