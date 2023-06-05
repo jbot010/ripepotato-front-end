@@ -7,6 +7,7 @@ import Signup from './pages/Signup/Signup'
 import Login from './pages/Login/Login'
 import Landing from './pages/Landing/Landing'
 import Profiles from './pages/Profiles/Profiles'
+import Movies from './pages/Movies/Movies'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 
 // components
@@ -16,12 +17,13 @@ import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
 // services
 import * as authService from './services/authService'
 import * as profileService from './services/profileService'
+import * as movieService from './services/movieService'
 
 // styles
 import './App.css'
 
 // types
-import { User, Profile } from './types/models'
+import { User, Profile, Movie } from './types/models'
 
 function App(): JSX.Element {
   const [user, setUser] = useState<User | null>(authService.getUser())
@@ -39,6 +41,20 @@ function App(): JSX.Element {
       }
     }
     user ? fetchProfiles() : setProfiles([])
+  }, [user])
+
+  const [movies, setMovies] = useState<Movie[]>([])
+
+  useEffect((): void => {
+    const fetchMovies = async (): Promise<void> => {
+      try {
+        const movieData: Movie[] = await movieService.getAllMovies()
+        setMovies(movieData)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    user ? fetchMovies() : setMovies([])
   }, [user])
 
 
@@ -63,6 +79,16 @@ function App(): JSX.Element {
             <ProtectedRoute user={user}>
               <Profiles 
                 profiles={profiles}
+              />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/movies"
+          element={
+            <ProtectedRoute user={user}>
+              <Movies
+                movies={movies}
               />
             </ProtectedRoute>
           }
