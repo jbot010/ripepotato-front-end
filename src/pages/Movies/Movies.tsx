@@ -54,8 +54,20 @@ const Movies = (props: MoviesProps): JSX.Element => {
 
   const handleUpdateMovie = async (formData: Movie) => {
     try {
-      const updateMovie = await movieService.update(formData)
-      setMovies([updateMovie, ...movies])
+      const response = await movieService.update(formData)
+      const updatedMovie = response[1][0]
+      
+      let nextMovies = []
+      for(let movie of movies){
+        if (formData.id === movie.id) {
+          nextMovies.push(updatedMovie)
+        } else {
+          nextMovies.push(movie)
+        }
+      }
+      console.log(nextMovies);
+      setMovies(nextMovies)
+      return updatedMovie
     } catch (error) {
       console.log(error)      
     }

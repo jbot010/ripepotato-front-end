@@ -3,6 +3,7 @@
 export interface movieFormData {
   title: string;
   rtScore: number;
+  id?: number;
 }
 
 /* ---------===== auth forms =====--------- */
