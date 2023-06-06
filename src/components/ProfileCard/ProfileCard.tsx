@@ -15,8 +15,10 @@ const ProfileCard = (props: ProfileCardProps): JSX.Element => {
 
   return (
     <article>
-      <img src={profilePic} alt={`${profile.name}'s avatar`} />
-      <h1>{profile.name}</h1>
+      <div style={{border: "1px solid white"}}>
+        <img src={profilePic} alt={`${profile.name}'s avatar`} />
+        <h1>{profile.name}</h1>
+      </div>
     </article>
   )
 }

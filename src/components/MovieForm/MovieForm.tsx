@@ -8,8 +8,8 @@ import { movieFormData } from "../../types/forms"
 import { Movie } from "../../types/models"
 
 interface MovieFormProps {
-  onSubmit: (formData: Movie) => Promise<void>
-  movie: Movie
+  onSubmit: (formData: movieFormData) => Promise<void>
+  movie?: Movie
 }
 
 const defaultFormData = {

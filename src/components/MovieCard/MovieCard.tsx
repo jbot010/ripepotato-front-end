@@ -1,5 +1,6 @@
 // npm modules
-import { useState, useEffect } from "react";
+import { useState } from "react"
+
 // types
 import { Movie, User } from "../../types/models"
 
@@ -10,11 +11,12 @@ interface MovieCardProps {
   movie: Movie
   user: User | null;
   onSubmit: (formData: Movie) => Promise<void>
+  onDelete: (movieId: number) => Promise<void>
 }
 
 const MovieCard = (props: MovieCardProps): JSX.Element => {
-  const { user, movie, onSubmit } = props
-  const [isEditing, setIsEditng] = useState(false)
+  const { user, movie, onSubmit, onDelete } = props
+  const [isEditing, setIsEditng] = useState<boolean>(false)
 
   const checkIfIsCurrentUser = () => {
     return user?.profile.id === movie.createdById
@@ -29,6 +31,12 @@ const MovieCard = (props: MovieCardProps): JSX.Element => {
     handleShowForm()
   }
 
+  const handleDeleteMovie = () => {
+    if (movie.id) {
+      onDelete(movie.id)
+    }
+  }
+
   return (
     <div style={{border: "1px solid white"}} key={`${movie.title}-${movie.rtScore}`}>
       {checkIfIsCurrentUser() ? <button onClick={handleShowForm}>{isEditing ? "cancel" : "EDIT"}</button> : ""}
@@ -40,11 +48,12 @@ const MovieCard = (props: MovieCardProps): JSX.Element => {
         <h2>{movie.rtScore}</h2>
       </div>}
       <h2>RIPEPOTATO SCORE HERE</h2>
-      {/* { user && 
+      { checkIfIsCurrentUser() ? 
         <button onClick={handleDeleteMovie}>
-          DELETE ACCOUNT
+          DELETE MOVIE
         </button>
-      } */}
+        : ""
+      }
     </div>
   )
 }
