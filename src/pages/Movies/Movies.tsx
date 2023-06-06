@@ -57,7 +57,7 @@ const Movies = (props: MoviesProps): JSX.Element => {
       const response = await movieService.update(formData)
       const updatedMovie = response[1][0]
 
-      let nextMovies = []
+      const nextMovies = []
       for (let movie of movies) {
         if (formData.id === movie.id) {
           nextMovies.push(updatedMovie)
@@ -83,7 +83,7 @@ const Movies = (props: MoviesProps): JSX.Element => {
     }
   }
 
-  if (!movies.length) return <p>No movies yet</p>
+  // if (!movies.length) return <p>No movies yet</p>
 
   return (
     <main className="list">
