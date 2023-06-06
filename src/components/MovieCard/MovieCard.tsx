@@ -3,6 +3,7 @@ import { useState } from "react"
 
 // types
 import { Movie, User } from "../../types/models"
+import { movieFormData } from "../../types/forms"
 
 // component
 import MovieForm from "../MovieForm/MovieForm"
@@ -10,7 +11,7 @@ import MovieForm from "../MovieForm/MovieForm"
 interface MovieCardProps {
   movie: Movie
   user: User | null;
-  onSubmit: (formData: Movie) => Promise<void>
+  onSubmit: (formData: movieFormData) => void
   onDelete: (movieId: number) => Promise<void>
 }
 
@@ -26,7 +27,7 @@ const MovieCard = (props: MovieCardProps): JSX.Element => {
     setIsEditng(!isEditing)
   }
 
-  const handleSubmit = (formData: Movie) => {
+  const handleSubmit = (formData: movieFormData) => {
     onSubmit({ id: movie.id, ...formData })
     handleShowForm()
   }

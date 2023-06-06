@@ -8,7 +8,7 @@ import { movieFormData } from "../../types/forms"
 import { Movie } from "../../types/models"
 
 interface MovieFormProps {
-  onSubmit: (formData: movieFormData) => Promise<void>
+  onSubmit: (formData: movieFormData) => void
   movie?: Movie
 }
 
@@ -20,7 +20,7 @@ const defaultFormData = {
 const MovieForm = (props: MovieFormProps) => {
   const [formData, setFormData] = useState<movieFormData>(props.movie || defaultFormData)
 
-  const handleChange = (evt) => {
+  const handleChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
     console.log(evt.target.name)
     setFormData({ ...formData, [evt.target.name]: evt.target.value })
   }

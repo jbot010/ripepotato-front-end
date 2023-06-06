@@ -26,7 +26,7 @@ async function create(formData: movieFormData): Promise<Movie> {
   return await res.json() as Movie
 }
 
-async function update(formData: movieFormData): Promise<Movie> {
+async function update(formData: movieFormData): Promise<Movie | void> {
   const res = await fetch(`${BASE_URL}/${formData.id}`, {
     method: 'PUT',
     headers: {
@@ -35,7 +35,10 @@ async function update(formData: movieFormData): Promise<Movie> {
     },
     body: JSON.stringify(formData)
   })
-  return await res.json() as Movie
+  const resData = res.json() as unknown
+  if (Array.isArray(resData)) {
+    return await resData[1][0] as Movie
+  }
 }
 
 async function deleteMovie(movieId: number): Promise<void> {
