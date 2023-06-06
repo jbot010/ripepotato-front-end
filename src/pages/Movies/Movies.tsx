@@ -8,7 +8,7 @@ import MovieCard from "../../components/MovieCard/MovieCard"
 import MovieForm from "../../components/MovieForm/MovieForm"
 
 // types
-import { Movie } from "../../types/models"
+import { Movie, User } from "../../types/models"
 import { useState } from "react"
 import { movieFormData } from "../../types/forms"
 
@@ -17,6 +17,7 @@ import * as movieService from "../../services/movieService"
 
 interface MoviesProps {
   movies: Movie[]
+  user: User | null;
 }
 
 const Movies = (props: MoviesProps): JSX.Element => {
@@ -38,6 +39,10 @@ const Movies = (props: MoviesProps): JSX.Element => {
     user ? fetchMovies() : setMovies([])
   }, [user])
 
+  const handleShowForm = () => {
+    setShowNewMovieForm(!showNewMovieForm)
+  }
+
   const handleAddMovie = async (formData: Movie) => {
     try {
       const newMovie = await movieService.create(formData)
@@ -56,14 +61,19 @@ const Movies = (props: MoviesProps): JSX.Element => {
     }
   }
 
+  // const handleDeleteMovie = async(): Promise<void> => {
+
+  // }
+
   if (!movies.length) return <p>No movies yet</p>
 
   return (
     <main className="list">
       <h1>Hello. This is a list of all the movies.</h1>
-      <button> {showNewMovieForm ? "cancel" : "Add New Movie"}</button>{showNewMovieForm ? <MovieForm onSubmit={handleAddMovie} /> : ""}
+      <button onClick={handleShowForm}> {showNewMovieForm ? "cancel" : "Add New Movie"}</button>
+      {showNewMovieForm ? <MovieForm onSubmit={handleAddMovie} /> : ""}
       {movies.map((movie: Movie) => (
-        <MovieCard key={movie.id} movie={movie} onEdit={handleUpdateMovie} />
+        <MovieCard key={movie.id} movie={movie} onSubmit={handleUpdateMovie} user={user} />
         ))}
     </main>
   )

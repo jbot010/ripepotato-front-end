@@ -38,5 +38,14 @@ async function update(formData: movieFormData): Promise<Movie> {
   return await res.json()
 }
 
+async function deleteMovie(): Promise<void> {
+  await fetch(`${BASE_URL}/delete`, {
+    method: 'DELETE',
+    headers: {
+      'Authorization': `Bearer ${tokenService.getToken()}`,
+    }
+  })
+}
 
-export { getAllMovies, create, update }
+
+export { getAllMovies, create, update, deleteMovie }

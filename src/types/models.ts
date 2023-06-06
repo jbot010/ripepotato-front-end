@@ -3,6 +3,7 @@
 export interface Movie {
   title: string;
   rtScore: number;
+  createdById: number;
 }
 
 

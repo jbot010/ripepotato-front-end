@@ -1,22 +1,45 @@
+// npm modules
+import { useState } from "react";
 // types
-import { Movie } from "../../types/models"
+import { Movie, User } from "../../types/models"
+
+// component
+import MovieForm from "../MovieForm/MovieForm"
 
 interface MovieCardProps {
   movie: Movie
-  onEdit: (formData: Movie) => Promise<void>
+  user: User | null;
+  onSubmit: (formData: Movie) => Promise<void>
 }
 
 const MovieCard = (props: MovieCardProps): JSX.Element => {
-  const { movie } = props
+  const { user, movie, onSubmit } = props
+
+  const [isEditing, setIsEditng] = useState(false)
+  const checkIfIsCurrentUser = () => {
+    console.log(movie, user);
+    
+    return user?.profile.id === movie.createdById
+    
+  }
+
 
   return (
     <div>
-      <img src="./cinema.png" alt={`${movie.title}'s avatar`} />
-      <h1>{movie.title}</h1>
-      <h2>{movie.rtScore}</h2>
+      {checkIfIsCurrentUser() ? <button> {isEditing ? "cancel" : "EDIT"}</button> : ""}
+      {isEditing ? <MovieForm onSubmit={onSubmit} /> 
+        : 
+      <div>
+        <img src="./cinema.png" alt={`${movie.title}'s avatar`} />
+        <h1>{movie.title}</h1>
+        <h2>{movie.rtScore}</h2>
+      </div>}
       <h2>RIPEPOTATO SCORE HERE</h2>
-      <button>EDIT</button>
-      <button>DELETE</button>
+      {/* { user && 
+        <button onClick={handleDeleteMovie}>
+          DELETE ACCOUNT
+        </button>
+      } */}
     </div>
   )
 }
