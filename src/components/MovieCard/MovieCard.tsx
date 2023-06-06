@@ -26,6 +26,7 @@ const MovieCard = (props: MovieCardProps): JSX.Element => {
 
   const handleSubmit = (formData: Movie) => {
     onSubmit({ id: movie.id, ...formData })
+    handleShowForm()
   }
 
   return (
