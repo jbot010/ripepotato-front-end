@@ -1,7 +1,7 @@
 import { useEffect } from "react"
 
 // css
-import styles from "./Movies.module.css"
+// import styles from "./Movies.module.css"
 
 // components
 import MovieCard from "../../components/MovieCard/MovieCard"

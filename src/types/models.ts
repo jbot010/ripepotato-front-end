@@ -5,8 +5,17 @@ export interface Movie {
   rtScore: number;
   createdById: number;
   id?: number;
+  votesReceived: Vote[];
 }
 
+export interface Vote {
+  id: number;
+  value: number;
+  movieId: number;
+  voterId: number;
+  createdAt: string;
+  updatedAt: string;
+}
 
 /* ---------===== auth models =====--------- */
 
