@@ -22,7 +22,6 @@ interface MoviesProps {
 
 const Movies = (props: MoviesProps): JSX.Element => {
   const [movies, setMovies] = useState<Movie[]>([])
-
   const [showNewMovieForm, setShowNewMovieForm] = useState(false)
 
   const { user } = props
@@ -55,21 +54,21 @@ const Movies = (props: MoviesProps): JSX.Element => {
   const handleUpdateMovie = async (formData: movieFormData) => {
     try {
       const updatedMovie = await movieService.update(formData)
-      if (!updatedMovie) return
-
-      const nextMovies = []
-      for (const movie of movies) {
-        if (formData.id === movie.id) {
-          nextMovies.push(updatedMovie)
-        } else {
-          nextMovies.push(movie)
+      console.log({ updatedMovie })
+      if (updatedMovie) {
+        const nextMovies = []
+        for (const movie of movies) {
+          if (formData.id === movie.id) {
+            nextMovies.push(updatedMovie)
+          } else {
+            nextMovies.push(movie)
+          }
         }
+        console.log("UPDATE", { nextMovies })
+        setMovies(nextMovies)
       }
-      console.log(nextMovies)
-      setMovies(nextMovies)
-      return updatedMovie
     } catch (error) {
-      console.log(error)
+      console.log({ error })
     }
   }
 

@@ -18,7 +18,9 @@ const defaultFormData = {
 }
 
 const MovieForm = (props: MovieFormProps) => {
-  const [formData, setFormData] = useState<movieFormData>(props.movie || defaultFormData)
+  const [formData, setFormData] = useState<movieFormData>(
+    props.movie || defaultFormData
+  )
 
   const handleChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
     console.log(evt.target.name)
@@ -28,7 +30,8 @@ const MovieForm = (props: MovieFormProps) => {
   const handleSubmit = (evt: React.FormEvent<HTMLElement>) => {
     console.log(formData)
     evt.preventDefault()
-    props.onSubmit(formData).then(() => setFormData(defaultFormData))
+    props.onSubmit(formData)
+    setFormData(defaultFormData)
   }
 
   return (
