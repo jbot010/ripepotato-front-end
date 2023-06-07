@@ -70,7 +70,7 @@ const MovieCard = (props: MovieCardProps): JSX.Element => {
     >
       {checkIfIsCurrentUser() ? (
         <button onClick={handleShowForm}>
-          {isEditing ? "cancel" : "EDIT"}
+          {isEditing ? "cancel" : "✎ EDIT"}
         </button>
       ) : (
         ""
@@ -80,15 +80,15 @@ const MovieCard = (props: MovieCardProps): JSX.Element => {
       ) : (
         <div>
           {/* <img src="./cinema.png" alt={`${movie.title}'s avatar`} /> */}
-          <h1>{movie.title}</h1>
-          <h2>Rotten Tomato Score: {movie.rtScore}</h2>
+          <h1>🎞️ {movie.title}</h1>
+          <h2>🍅 Rotten Tomato Score: {movie.rtScore}</h2>
         </div>
       )}
-      <h2> Ripe Potato Score: {avgScore}</h2>
+      <h2>🥔 Ripe Potato Score: {avgScore}</h2>
       <VoteInput defaultValue={userScore} />
 
       {checkIfIsCurrentUser() ? (
-        <button onClick={handleDeleteMovie}>DELETE MOVIE</button>
+        <button onClick={handleDeleteMovie}>🗑️ DELETE MOVIE</button>
       ) : (
         ""
       )}

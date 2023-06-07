@@ -35,7 +35,7 @@ const VoteInput = (props: VoteInputProps): JSX.Element => {
         value={value}
         onChange={handleChange}
       />
-      <button type="submit">SUBMIT</button>
+      <button type="submit">SUBMIT 🥔</button>
     </form>
   )
 }

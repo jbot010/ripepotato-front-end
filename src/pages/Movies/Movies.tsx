@@ -94,7 +94,7 @@ const Movies = (props: MoviesProps): JSX.Element => {
       <h1>Hello. This is a list of all the movies.</h1>
       <button onClick={handleShowForm}>
         {" "}
-        {showNewMovieForm ? "cancel" : "Add New Movie"}
+        {showNewMovieForm ? "cancel" : "🎬 Add New Movie"}
       </button>
       {showNewMovieForm ? <MovieForm onSubmit={handleAddMovie} /> : ""}
       {movies.map((movie: Movie) => (
