@@ -35,10 +35,9 @@ async function update(formData: movieFormData): Promise<Movie> {
     },
     body: JSON.stringify(formData),
   })
-  return (await res
-    .json()
-    .then((data) => (Array.isArray(data) ? data[1][0] : null))) as Movie
+  return (await res.json().then((data) => (Array.isArray(data) ? data[1][0] : null))) as Movie
 }
+
 
 async function deleteMovie(movieId: number): Promise<void> {
   await fetch(`${BASE_URL}/movies/${movieId}`, {

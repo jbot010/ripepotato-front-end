@@ -72,6 +72,7 @@ const Movies = (props: MoviesProps): JSX.Element => {
     }
   }
 
+  
   const handleDeleteMovie = async (movieId: number): Promise<void> => {
     try {
       await movieService.deleteMovie(movieId)
