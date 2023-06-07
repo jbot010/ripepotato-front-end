@@ -7,6 +7,7 @@ import { movieFormData } from "../../types/forms"
 
 // component
 import MovieForm from "../MovieForm/MovieForm"
+import VoteInput from "./VoteInput"
 
 interface MovieCardProps {
   movie: Movie
@@ -18,6 +19,8 @@ interface MovieCardProps {
 const MovieCard = (props: MovieCardProps): JSX.Element => {
   const { user, movie, onSubmit, onDelete } = props
   const [isEditing, setIsEditng] = useState<boolean>(false)
+  const [userScore, setUserScore] = useState<number>(0)
+  const [avgScore, setAvgScore] = useState<number>(0)
 
   const checkIfIsCurrentUser = () => {
     return user?.profile.id === movie.createdById
@@ -38,6 +41,22 @@ const MovieCard = (props: MovieCardProps): JSX.Element => {
     }
   }
   console.log("MOVIE CARD", { movie })
+
+
+  const getVotes = () => {
+    let total = 0
+
+    // map over movies.votesReceived
+    // forEach vote check voteId === user.profile.id
+    // if ids match, set user vote 
+    // update userScore
+    // forEach vote add value to total
+    
+    // math for total total / votesReceived.length 
+    // setAvgScore
+
+  }
+
 
   return (
     <div
@@ -60,7 +79,9 @@ const MovieCard = (props: MovieCardProps): JSX.Element => {
           <h2>{movie.rtScore}</h2>
         </div>
       )}
-      <h2>RIPEPOTATO SCORE HERE</h2>
+      <h2> {avgScore} RIPEPOTATO SCORE HERE</h2>
+      <VoteInput defaultValue={userScore}/>
+    
       {checkIfIsCurrentUser() ? (
         <button onClick={handleDeleteMovie}>DELETE MOVIE</button>
       ) : (

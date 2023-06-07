@@ -7,6 +7,12 @@ export interface movieFormData {
   createdById?: number;
 }
 
+export interface voteFormData {
+  value: number;
+  movieId: number;
+  voterId: number;
+}
+
 /* ---------===== auth forms =====--------- */
 
 export interface LoginFormData {

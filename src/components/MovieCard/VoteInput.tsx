@@ -1,29 +1,43 @@
-// // npm modules
-// import { useState } from "react"
+// npm modules
+import { useState } from "react"
 
-// // types
-// import { Movie, User } from "../../types/models"
+// types
 
-// interface VoteInputProps {
-//   movie: Movie
-//   user: User
-// }
+interface VoteInputProps {
+  defaultValue: number
+}
 
-// const VoteInput = (props: VoteInputProps): JSX.Element => {
-//   const { movie, user } = props
+const VoteInput = (props: VoteInputProps): JSX.Element => {
+  const { defaultValue, onSubmit } = props
 
-//   const voteCount = movie.votesReceived.length
-//   let voteSum = 0
+  const [value, setValue] = useState<number>(defaultValue)
 
-//   movie.votesReceived.forEach((vote) => (voteSum += vote.value))
+  //onChange
+  const handleChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
+    console.log(evt.target.value)
+    setValue(evt.target.value)
+  }
 
-//   const movieRating = voteCount ? voteSum / voteCount : 1
+  const handleSubmit = (evt: React.FormEvent<HTMLElement>) => {
 
-//   return (
-//     <section>
-//       <input type="number" />
-//     </section>
-//   )
-// }
+  }
 
-// export default VoteInput
+  return (
+    <form action="">
+      <label htmlFor="vote-input">My RipePotato Score</label>
+      <input
+        type="number"
+        name="rpScore"
+        min="0"
+        max="100"
+        id="rpScore-input"
+        placeholder="RipePotato Score"
+        value={value}
+        onChange={handleChange}
+      />
+      <button type="submit">SUBMIT</button>
+    </form>
+  )
+}
+
+export default VoteInput

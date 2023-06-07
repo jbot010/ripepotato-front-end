@@ -1,7 +1,7 @@
 import { useEffect } from "react"
 
 // css
-// import styles from "./Movies.module.css"
+import styles from "./Movies.module.css"
 
 // components
 import MovieCard from "../../components/MovieCard/MovieCard"
@@ -83,10 +83,14 @@ const Movies = (props: MoviesProps): JSX.Element => {
     }
   }
 
+  const handleUpdateVote = async (movieId: number, value: number): Promise<Movie> => {
+    
+  }
+
   // if (!movies.length) return <p>No movies yet</p>
 
   return (
-    <main className="list">
+    <main className={styles.container}>
       <h1>Hello. This is a list of all the movies.</h1>
       <button onClick={handleShowForm}>
         {" "}
