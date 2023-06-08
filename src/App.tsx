@@ -1,36 +1,37 @@
-// npm modules 
-import { useState, useEffect } from 'react'
-import { Routes, Route, useNavigate } from 'react-router-dom'
+// npm modules
+import { useState, useEffect } from "react"
+import { Routes, Route, useNavigate } from "react-router-dom"
 
 // pages
-import Signup from './pages/Signup/Signup'
-import Login from './pages/Login/Login'
-import Landing from './pages/Landing/Landing'
-import Profiles from './pages/Profiles/Profiles'
-import Movies from './pages/Movies/Movies'
-import ChangePassword from './pages/ChangePassword/ChangePassword'
+import Signup from "./pages/Signup/Signup"
+import Login from "./pages/Login/Login"
+import Landing from "./pages/Landing/Landing"
+import Profiles from "./pages/Profiles/Profiles"
+import Movies from "./pages/Movies/Movies"
+import ChangePassword from "./pages/ChangePassword/ChangePassword"
 
 // components
-import NavBar from './components/NavBar/NavBar'
-import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
+import NavBar from "./components/NavBar/NavBar"
+import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute"
 
 // services
-import * as authService from './services/authService'
-import * as profileService from './services/profileService'
+import * as authService from "./services/authService"
+import * as profileService from "./services/profileService"
 
 // styles
-import './App.css'
+import "./App.css"
 
 // types
-import { User, Profile } from './types/models'
+import { User, Profile } from "./types/models"
 
 function App(): JSX.Element {
   const [user, setUser] = useState<User | null>(authService.getUser())
   const navigate = useNavigate()
 
   const [profiles, setProfiles] = useState<Profile[]>([])
-  
+
   useEffect((): void => {
+    console.log("USEEFFECT RAN", { user })
     const fetchProfiles = async (): Promise<void> => {
       try {
         const profileData: Profile[] = await profileService.getAllProfiles()
@@ -45,13 +46,14 @@ function App(): JSX.Element {
   const handleLogout = (): void => {
     authService.logout()
     setUser(null)
-    navigate('/')
+    navigate("/")
   }
 
   const handleAuthEvt = (): void => {
     setUser(authService.getUser())
   }
 
+  console.log("APP JS LOAD")
   return (
     <>
       <NavBar user={user} handleLogout={handleLogout} />
@@ -61,9 +63,7 @@ function App(): JSX.Element {
           path="/profiles"
           element={
             <ProtectedRoute user={user}>
-              <Profiles 
-                profiles={profiles}
-              />
+              <Profiles profiles={profiles} />
             </ProtectedRoute>
           }
         />
@@ -71,9 +71,7 @@ function App(): JSX.Element {
           path="/movies"
           element={
             <ProtectedRoute user={user}>
-              <Movies
-                user={user}
-              />
+              <Movies user={user} />
             </ProtectedRoute>
           }
         />

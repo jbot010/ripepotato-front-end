@@ -8,15 +8,15 @@ import MovieCard from "../../components/MovieCard/MovieCard"
 import MovieForm from "../../components/MovieForm/MovieForm"
 
 // types
-import { Movie, User } from "../../types/models"
+import { Movie, User, Vote } from "../../types/models"
 import { useState } from "react"
-import { movieFormData } from "../../types/forms"
+import { movieFormData, voteFormData } from "../../types/forms"
 
 // service
 import * as movieService from "../../services/movieService"
+import * as voteService from "../../services/voteService"
 
 interface MoviesProps {
-  // movies: Movie[]
   user: User
 }
 
@@ -54,7 +54,6 @@ const Movies = (props: MoviesProps): JSX.Element => {
   const handleUpdateMovie = async (formData: movieFormData) => {
     try {
       const updatedMovie = await movieService.update(formData)
-      console.log({ updatedMovie })
       if (updatedMovie) {
         const nextMovies = []
         for (const movie of movies) {
@@ -71,7 +70,6 @@ const Movies = (props: MoviesProps): JSX.Element => {
     }
   }
 
-  
   const handleDeleteMovie = async (movieId: number): Promise<void> => {
     try {
       await movieService.deleteMovie(movieId)
@@ -82,11 +80,24 @@ const Movies = (props: MoviesProps): JSX.Element => {
     }
   }
 
-  // const handleUpdateVote = async (movieId: number, value: number): Promise<Movie> => {
-    
-  // }
-
-  // if (!movies.length) return <p>No movies yet</p>
+  const handleUpdateVote = async (
+    movieId: number,
+    value: number
+  ): Promise<Movie> => {
+    try {
+      const resp = await voteService.castVote(value, movieId)
+      if (resp) {
+        const votedMovies = movies.map((movie) => {
+          if (movie.id === movieId) {
+            return resp
+          } else return movie
+        })
+        setMovies(votedMovies)
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   return (
     <main className={styles.container}>
@@ -103,6 +114,7 @@ const Movies = (props: MoviesProps): JSX.Element => {
           onDelete={handleDeleteMovie}
           onSubmit={handleUpdateMovie}
           user={user}
+          onSubmitVote={handleUpdateVote}
         />
       ))}
     </main>

@@ -5,33 +5,35 @@ import { useState } from "react"
 
 interface VoteInputProps {
   defaultValue: number
+  onSubmit: (movieId: number, value: number) => void
+  movieId: number
 }
 
 const VoteInput = (props: VoteInputProps): JSX.Element => {
-  const { defaultValue, onSubmit } = props
+  const { defaultValue, onSubmit, movieId } = props
 
   const [value, setValue] = useState<number>(defaultValue)
 
   //onChange
   const handleChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(evt.target.value)
-    setValue(evt.target.value)
+    setValue(parseInt(evt.target.value))
   }
 
   const handleSubmit = (evt: React.FormEvent<HTMLElement>) => {
-
+    evt.preventDefault()
+    onSubmit(movieId, value)
   }
+console.log(defaultValue, "DEFAULT VALUE");
 
   return (
-    <form action="">
-      <label htmlFor="vote-input">My Ripe Potato Score</label>
+    <form onSubmit={handleSubmit}>
+      <label>My Ripe Potato Score</label>
       <input
         type="number"
         name="rpScore"
         min="0"
         max="100"
         id="rpScore-input"
-        // placeholder="RipePotato Score"
         value={value}
         onChange={handleChange}
       />

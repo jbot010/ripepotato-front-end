@@ -25,7 +25,7 @@ const Landing = (props: LandingProps): JSX.Element => {
         {/* <p>CEO</p> */}
       </div>
       <div className={styles.P2}>
-        <img src="https://res.cloudinary.com/ds57cqdwo/image/upload/v1684371990/barkbase/studioehadshotday-2079_720_luhgkq.jpg" alt="Julian" />
+        <img src="https://res.cloudinary.com/di6tvzeal/image/upload/v1686186144/jf_headshot-1mb_wfv1cg.jpg" alt="Julian" />
         <h2><a href="https://github.com/jbot010" target="_blank" rel="noopener noreferrer">Julian</a></h2>
         <p>Full Stack Engineer</p>
         {/* <p>Movie Goer</p> */}

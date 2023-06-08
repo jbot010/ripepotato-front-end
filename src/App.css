@@ -20,9 +20,9 @@ body {
 
 form {
   font-family: "Montserrat", sans-serif;
-  width: 50%;
+  /* width: 50%; */
   display: flex;
-  max-width: 200px;
+  /* max-width: 200px; */
   border-radius: 5px;
   flex-direction: column;
   background-color: white;
@@ -97,6 +97,7 @@ div img {
   height: auto;
 }
 
-#rpScore-input {
+/* #rpScore-input {
   width: 80px;
-}
+} */
+

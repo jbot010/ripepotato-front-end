@@ -23,12 +23,10 @@ const MovieForm = (props: MovieFormProps) => {
   )
 
   const handleChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(evt.target.name)
     setFormData({ ...formData, [evt.target.name]: evt.target.value })
   }
 
   const handleSubmit = (evt: React.FormEvent<HTMLElement>) => {
-    console.log(formData)
     evt.preventDefault()
     props.onSubmit(formData)
     setFormData(defaultFormData)

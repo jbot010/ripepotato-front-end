@@ -40,7 +40,7 @@ async function update(formData: movieFormData): Promise<Movie> {
 
 
 async function deleteMovie(movieId: number): Promise<void> {
-  await fetch(`${BASE_URL}/movies/${movieId}`, {
+  await fetch(`${BASE_URL}/${movieId}`, {
     method: "DELETE",
     headers: {
       Authorization: `Bearer ${tokenService.getToken()}`,
