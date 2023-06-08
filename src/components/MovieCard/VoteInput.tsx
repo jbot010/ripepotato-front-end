@@ -24,14 +24,14 @@ const VoteInput = (props: VoteInputProps): JSX.Element => {
 
   return (
     <form action="">
-      <label htmlFor="vote-input">My RipePotato Score</label>
+      <label htmlFor="vote-input">My Ripe Potato Score</label>
       <input
         type="number"
         name="rpScore"
         min="0"
         max="100"
         id="rpScore-input"
-        placeholder="RipePotato Score"
+        // placeholder="RipePotato Score"
         value={value}
         onChange={handleChange}
       />

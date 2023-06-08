@@ -17,7 +17,7 @@ import * as movieService from "../../services/movieService"
 
 interface MoviesProps {
   // movies: Movie[]
-  user: User | null
+  user: User
 }
 
 const Movies = (props: MoviesProps): JSX.Element => {
@@ -64,7 +64,6 @@ const Movies = (props: MoviesProps): JSX.Element => {
             nextMovies.push(movie)
           }
         }
-        console.log("UPDATE", { nextMovies })
         setMovies(nextMovies)
       }
     } catch (error) {
@@ -83,15 +82,15 @@ const Movies = (props: MoviesProps): JSX.Element => {
     }
   }
 
-  const handleUpdateVote = async (movieId: number, value: number): Promise<Movie> => {
+  // const handleUpdateVote = async (movieId: number, value: number): Promise<Movie> => {
     
-  }
+  // }
 
   // if (!movies.length) return <p>No movies yet</p>
 
   return (
     <main className={styles.container}>
-      <h1>Hello. This is a list of all the movies.</h1>
+      <h1>Basket of Ripe Potatoes</h1>
       <button onClick={handleShowForm}>
         {" "}
         {showNewMovieForm ? "cancel" : "🎬 Add New Movie"}

@@ -65,7 +65,7 @@ const MovieCard = (props: MovieCardProps): JSX.Element => {
   
   return (
     <div
-      style={{ border: "1px solid white" }}
+      style={{ border: "2px solid black" }}
       key={`${movie.title}-${movie.rtScore}`}
     >
       {checkIfIsCurrentUser() ? (
@@ -79,7 +79,7 @@ const MovieCard = (props: MovieCardProps): JSX.Element => {
         <MovieForm movie={movie} onSubmit={handleSubmit} />
       ) : (
         <div>
-          {/* <img src="./cinema.png" alt={`${movie.title}'s avatar`} /> */}
+          <img src="./cinema.png" alt={`${movie.title}'s avatar`} />
           <h1>🎞️ {movie.title}</h1>
           <h2>🍅 Rotten Tomato Score: {movie.rtScore}</h2>
         </div>

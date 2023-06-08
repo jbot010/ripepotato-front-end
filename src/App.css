@@ -10,7 +10,7 @@ body {
   background-color: white;
   min-height: 100vh;
   width: 100%;
-  font-family: 'Nunito', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -19,22 +19,23 @@ body {
 }
 
 form {
-  font-family: 'Nunito', sans-serif;
-  width: 100%;
+  font-family: "Montserrat", sans-serif;
+  width: 50%;
   display: flex;
-  max-width: 500px;
+  max-width: 200px;
   border-radius: 5px;
   flex-direction: column;
   background-color: white;
-  padding: 21px 21px 28px 21px;
+  padding: 10px 10px;
   border: 1px solid rgb(220, 220, 220);
-  box-shadow: -1px 5px 19px -5px rgba(0,0,0,0.25);
-  -moz-box-shadow: -1px 5px 19px -5px rgba(0,0,0,0.25);
-  -webkit-box-shadow: -1px 5px 19px -5px rgba(0,0,0,0.25);
+  box-shadow: -1px 5px 19px -5px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: -1px 5px 19px -5px rgba(0, 0, 0, 0.25);
+  -webkit-box-shadow: -1px 5px 19px -5px rgba(0, 0, 0, 0.25);
 }
 button {
+  font-family: "Montserrat", sans-serif;
   border-radius: 6px;
-  padding: 3px;
+  padding: 5px;
   font-weight: 800;
   box-shadow: 2px 2px 2px gray;
 }
@@ -47,11 +48,11 @@ form label {
   color: black;
   padding-top: 12px;
 }
-/* form button {
-  width: 30%;
+form button {
+  width: 50%;
   margin-top: 12px;
   margin-left: 10%;
-} */
+}
 
 nav {
   top: 0;
@@ -91,4 +92,11 @@ main {
   padding-top: 80px;
 }
 
+div img {
+  width: 50%;
+  height: auto;
+}
 
+#rpScore-input {
+  width: 80px;
+}
