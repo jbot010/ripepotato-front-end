@@ -97,9 +97,9 @@ const MovieCard = (props: MovieCardProps): JSX.Element => {
           />
           <h1 className={styles.title}>🎞️ {movie.title}</h1>
           <h2 className={styles.rtScore}>
-            🍅 Rotten Tomato Score: {movie.rtScore}
+            🍅 Rotten Tomato Score: {movie.rtScore}%
           </h2>
-          <h2 className={styles.rpScore}>🥔 Ripe Potato Score: {avgScore}</h2>
+          <h2 className={styles.rpScore}>🥔 Ripe Potato Score: {avgScore}%</h2>
         </div>
       )}
       <VoteInput
