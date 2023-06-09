@@ -60,7 +60,15 @@ const Landing = (): JSX.Element => {
             src="https://res.cloudinary.com/di6tvzeal/image/upload/v1686172068/233E0E19-9C51-4B0F-8CE7-2F17D9F65896_1_105_c_gfowwt.jpg"
             alt="Bowie"
           />
-          <h2>Bowie</h2>
+          <h2>
+            <a
+              href="https://www.instagram.com/bowiethefox/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Bowie
+            </a>
+          </h2>
           <p>Office Manager</p>
         </div>
       </div>
