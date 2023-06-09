@@ -1,16 +1,21 @@
-![Ripe Potato]( public/rpscreenshot.png "ripepotato-screenshot")
+![Ripe Potatoes]( public/rpss2.png "ripepotatoes-screenshot")
 
-# Ripe Potato
+# Ripe Potatoes
 Culturally relevant, critically irrelevant.
+
+Welcome to "Ripe Potatoes," the ultimate destination for movie enthusiasts seeking honest and insightful reviews of films that may have received a Rotten Tomato score of less than 60. Here at Ripe Potatoes, we understand that critical acclaim doesn't always align with personal taste, and we aim to provide a platform where movies with lower scores can still find their audience.
 
 # Getting Started
 
-## Build your [BarkBase](https://ripepotato.netlify.app/ "Ripe Potatoe link")
+## Rate your [Ripe Potatoes](https://ripepotatoes.netlify.app/ "Ripe Potatoes link")
 
 #### Project planning [here](https://trello.com/b/NyTZ3VPn/reelvibes "Trello Board")
 
 #### Back-end [here](https://github.com/jbot010/ripepotato-back-end)
 
+
+## Client
+* [Lizzie Heyboer](https://www.linkedin.com/in/lizzieheyboer/)
 
 ## Credits 🥔
 * [Decoupled MERN Stack with JWT Auth Template - Front End](https://github.com/SEI-Remote/decoupled-pern-jwt-auth-template-front-end-ts)
@@ -23,11 +28,10 @@ Culturally relevant, critically irrelevant.
 ## Technologies used 💻
 * TypeScript
 * React
-* Material UI
 * Node.js
 * Express
-* Mongoose
-* MongoDB
+* Sequelize
+* Supabase
 * bcrypt
 * JWT
 * JavaScript
@@ -42,3 +46,6 @@ Culturally relevant, critically irrelevant.
 
 ## Next Steps 🔮
 - [ ] Connect Movie API
+- [ ] Add Reviews
+- [ ] Expand Profile features
+- [ ] Create Movie lists
