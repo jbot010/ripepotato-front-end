@@ -28,7 +28,7 @@ Welcome to "Ripe Potatoes," the ultimate destination for movie enthusiasts seeki
 ## Technologies used 💻
 * TypeScript
 * React
-* Node.js
+* PostgreSQL
 * Express
 * Sequelize
 * Supabase
