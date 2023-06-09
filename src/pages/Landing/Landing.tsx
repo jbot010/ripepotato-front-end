@@ -19,8 +19,10 @@ const Landing = (props: LandingProps): JSX.Element => {
         />
       </div>
       <div className={styles.ABOUT}>
-        <h1>Ripe Potato</h1>
+        <h1>Ripe Potatoes</h1>
         <h2>Culturally relevant, critically irrelevant</h2>
+        <p>Welcome to "Ripe Potatoes," the ultimate destination for honest and insightful reviews of movies that received a Rotten Tomatoes score of less than 60. <br>
+        </br>We provide a platform where films with lower scores can still find their audience, acknowledging that critical acclaim doesn't always align with personal taste.</p>
       </div>
       <div className={styles.team}>
         <h1>TEAM</h1>
