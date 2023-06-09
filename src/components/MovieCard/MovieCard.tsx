@@ -23,8 +23,8 @@ interface MovieCardProps {
 const MovieCard = (props: MovieCardProps): JSX.Element => {
   const { user, movie, onSubmit, onDelete, onSubmitVote } = props
   const [isEditing, setIsEditng] = useState<boolean>(false)
-  const [userScore, setUserScore] = useState<number>(getUserScore(movie))
-  const [avgScore, setAvgScore] = useState<number>(getAverageScore(movie))
+  const [userScore, setUserScore] = useState<number>(0)
+  const [avgScore, setAvgScore] = useState<number>(0)
 
   useEffect((): void => {
     getVotes()
@@ -49,19 +49,21 @@ const MovieCard = (props: MovieCardProps): JSX.Element => {
     }
   }
 
-  function getUserScore(m) {
-    const vote = m.votesReceived.filter((v) => v.voterId === user.profile.id)
+  // function getUserScore(m) {
+  //   const vote = m.votesReceived.filter((v) => v.voterId === user.profile.id)
 
-    if (vote.length > 0) {
-      return vote[0].value
-    } else return 0
-  }
+  //   if (vote.length > 0) {
+  //     return vote[0].value
+  //   } else return 0
+  // }
 
-  function getAverageScore(m) {
-    if (m && m.votesReceived.length > 0) {
-      return m.votesReceived.reduce((x, y) => x.value + y.value)[0]
-    } else return 0
-  }
+  // function getAverageScore(m: Movie) {
+  //   const votes = m.votesReceived
+  //   console.log({ votes })
+  //   if (votes.length > 0) {
+  //     return votes.reduce((x, y) => x.value + y.value)
+  //   } else return 0
+  // }
 
   const getVotes = () => {
     if (movie.votesReceived && movie.votesReceived.length > 0) {
@@ -83,19 +85,24 @@ const MovieCard = (props: MovieCardProps): JSX.Element => {
   console.log({ avgScore }, "AVGSCORE")
 
   return (
-    <div className={styles.container} key={`${movie.title}-${movie.rtScore}`}>
-      {checkIfIsCurrentUser() ? (
-        <button onClick={handleShowForm}>
-          {isEditing ? "cancel" : "✎ EDIT"}
-        </button>
-      ) : (
-        ""
-      )}
-      {checkIfIsCurrentUser() ? (
-        <button onClick={handleDeleteMovie}>🗑️ DELETE MOVIE</button>
-      ) : (
-        ""
-      )}
+    <div
+      className={styles.container}
+      key={`${movie.title}-${movie.rtScore}-${userScore}-${avgScore}`}
+    >
+      <div className={styles.buttonContainer}>
+        {checkIfIsCurrentUser() ? (
+          <button onClick={handleShowForm}>
+            {isEditing ? "cancel" : "✎ EDIT"}
+          </button>
+        ) : (
+          ""
+        )}
+        {checkIfIsCurrentUser() ? (
+          <button onClick={handleDeleteMovie}>🗑️ DELETE MOVIE</button>
+        ) : (
+          ""
+        )}
+      </div>
       {isEditing ? (
         <MovieForm movie={movie} onSubmit={handleSubmit} />
       ) : (

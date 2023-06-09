@@ -1,6 +1,9 @@
 // npm modules
 import { useState } from "react"
 
+// style
+import styles from "./MovieCard.module.css"
+
 // types
 
 interface VoteInputProps {
@@ -23,21 +26,24 @@ const VoteInput = (props: VoteInputProps): JSX.Element => {
     evt.preventDefault()
     onSubmit(movieId, value)
   }
-console.log(defaultValue, "DEFAULT VALUE");
+  console.log(defaultValue, "DEFAULT")
 
   return (
     <form onSubmit={handleSubmit}>
       <label>My Ripe Potato Score</label>
-      <input
-        type="number"
-        name="rpScore"
-        min="0"
-        max="100"
-        id="rpScore-input"
-        value={value}
-        onChange={handleChange}
-      />
-      <button type="submit">SUBMIT 🥔</button>
+      <span>
+        <input
+          className={styles.voteInput}
+          type="number"
+          name="rpScore"
+          min="0"
+          max="100"
+          id="rpScore-input"
+          value={value}
+          onChange={handleChange}
+        />
+        <button type="submit">SUBMIT 🥔</button>
+      </span>
     </form>
   )
 }

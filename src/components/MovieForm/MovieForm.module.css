@@ -12,14 +12,11 @@
   box-shadow: 7px 7px purple;
   border: .25vw solid black;
   transition: 0.3s;
+  justify-content: center;
+  align-items: center;
 }
 
-.voteInput {
-  width: 80px;
-}
-
-.buttonContainer {
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
+.container > button {
+  margin-left: 0;
+  
 }

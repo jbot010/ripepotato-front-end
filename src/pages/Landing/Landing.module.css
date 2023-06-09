@@ -1,30 +1,15 @@
 .container {
-  display: grid;
-  /* grid-template-columns: 1fr 1fr 1fr 1fr; */
-  /* grid-template-rows: .5fr .5fr .5fr .75fr .25fr 1fr 1fr; */
-  grid-auto-columns: 1fr;
-  /* gap: 5vw 0; */
-  grid-auto-flow: row;
-  grid-template-areas:
-    "HERO HERO HERO HERO"
-    "ABOUT ABOUT ABOUT ABOUT"
-    ". STAFF STAFF ."
-    "P1 P2 P3 P4";
-  background: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-/* .HERO { 
-  grid-area: HERO; 
-  overflow: hidden;
-} */
-
 .HERO > img {
-  place-self: stretch stretch;
-  width: 100%;
   padding-bottom: 0;
   overflow: hidden;
   border-radius: 0;
-  /* border-bottom: 5px solid rgb(0, 0, 0); */
+  width: 150px;
+  margin-top: 50px;
 }
 
 .ABOUT { 
@@ -34,6 +19,7 @@
   font-size: 2vw;
   padding-left: 10vw;
   padding-right: 10vw;
+  margin-bottom: 50px;
 }
 
 .ABOUT > h1{
@@ -48,37 +34,36 @@
   padding: 0;
 }
 
-.STAFF {
-  grid-area: STAFF;
-  place-self: center center;
+.team {
+  width: 80%;
 }
 
-.STAFF > h1{
-  font-size: 5vw;
-  margin-bottom: 0;
-  border-bottom: .2vw solid black;
-}
-
-.P1 { 
-  grid-area: P1; 
+.teamSection { 
   display: flex;
+  margin: 20px;
+  padding: 20px;
   flex-direction: column;
   align-items: center;
   justify-self: center;
   text-align: center;
   font-size: 1.75vw;
   background: #ffffff;
-  box-shadow: 7px 7px #2775B9;
+  box-shadow: 7px 7px purple;
   border: .25vw solid black;
   transition: 0.3s;
 }
 
-.P1:hover{
+.team > h1 {
+  text-align: center;
+  margin: auto;
+}
+
+.teamSection:hover{
   transition: 0.3s;
   box-shadow: 7px 7px #184871;
 }
 
-.P1 > h2{
+.teamSection > h2{
   align-self: start;
   font-size: 2.5vw;
   font-weight: 600;
@@ -88,7 +73,7 @@
   margin-left: 1vw;
 }
 
-.P1 > p{
+.teamSection > p{
   font-weight: 600;
   align-self: start;
   text-align: left;
@@ -96,103 +81,7 @@
   padding: 5px 0 0 0;
 }
 
-.P1 > img {
-  max-width: 100%;
-  width: 20vw;
-  height: 20vw;
-  object-fit: cover;
-  padding-bottom: 0;
-  overflow: hidden;
-  border-radius: 0;
-  border-bottom: .25vw solid black;
-}
-
-.P2 { 
-  grid-area: P2; 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-self: center;
-  text-align: center;
-  font-size: 1.75vw;
-  background: #ffffff;
-  box-shadow: 7px 7px #2775B9;
-  border: .25vw solid black;
-  transition: 0.3s;
-}
-
-.P2:hover{
-  transition: 0.3s;
-  box-shadow: 7px 7px #184871;
-}
-
-.P2 > h2{
-  align-self: start;
-  font-size: 2.5vw;
-  font-weight: 600;
-  border-bottom: .2vw solid black;
-  padding: 0;
-  background: white;
-  margin-left: 1vw;
-}
-
-.P2 > p{
-  font-weight: 600;
-  align-self: start;
-  text-align: left;
-  margin-left: 1vw;
-  padding: 5px 0 0 0;
-}
-
-.P2 > img {
-  max-width: 100%;
-  width: 20vw;
-  height: 20vw;
-  object-fit: cover;
-  padding-bottom: 0;
-  overflow: hidden;
-  border-radius: 0;
-  border-bottom: .25vw solid black;
-}
-
-.P3 { 
-  grid-area: P3; 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-self: center;
-  text-align: center;
-  font-size: 1.75vw;
-  background: #ffffff;
-  box-shadow: 7px 7px #2775B9;
-  border: .25vw solid black;
-  transition: 0.3s;
-}
-
-.P3:hover{
-  transition: 0.3s;
-  box-shadow: 7px 7px #184871;
-}
-
-.P3 > h2{
-  align-self: start;
-  font-size: 2.5vw;
-  font-weight: 600;
-  border-bottom: .2vw solid black;
-  padding: 0;
-  background: white;
-  margin-left: 1vw;
-}
-
-.P3 > p{
-  font-weight: 600;
-  align-self: start;
-  text-align: left;
-  margin-left: 1vw;
-  padding: 5px 0 0 0;
-}
-
-.P3 > img {
+.teamSection > img {
   max-width: 100%;
   width: 20vw;
   height: 20vw;

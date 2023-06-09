@@ -2,6 +2,8 @@
 import { useState } from "react"
 
 // css
+import styles from "./MovieForm.module.css"
+
 
 // types
 import { movieFormData } from "../../types/forms"
@@ -33,7 +35,7 @@ const MovieForm = (props: MovieFormProps) => {
   }
 
   return (
-    <form onSubmit={handleSubmit} autoComplete="off">
+    <form className={styles.container} onSubmit={handleSubmit} autoComplete="off">
       <label htmlFor="title-input">Title</label>
       <input
         required
