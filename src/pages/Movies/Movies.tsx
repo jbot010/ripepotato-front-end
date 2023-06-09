@@ -66,7 +66,7 @@ const Movies = (props: MoviesProps): JSX.Element => {
         setMovies(nextMovies)
       }
     } catch (error) {
-      console.log({ error })
+      console.log(error)
     }
   }
 

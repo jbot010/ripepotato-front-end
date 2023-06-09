@@ -26,7 +26,6 @@ const VoteInput = (props: VoteInputProps): JSX.Element => {
     evt.preventDefault()
     onSubmit(movieId, value)
   }
-  console.log(defaultValue, "DEFAULT")
 
   return (
     <form onSubmit={handleSubmit}>

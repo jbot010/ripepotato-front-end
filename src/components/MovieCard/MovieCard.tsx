@@ -49,22 +49,6 @@ const MovieCard = (props: MovieCardProps): JSX.Element => {
     }
   }
 
-  // function getUserScore(m) {
-  //   const vote = m.votesReceived.filter((v) => v.voterId === user.profile.id)
-
-  //   if (vote.length > 0) {
-  //     return vote[0].value
-  //   } else return 0
-  // }
-
-  // function getAverageScore(m: Movie) {
-  //   const votes = m.votesReceived
-  //   console.log({ votes })
-  //   if (votes.length > 0) {
-  //     return votes.reduce((x, y) => x.value + y.value)
-  //   } else return 0
-  // }
-
   const getVotes = () => {
     if (movie.votesReceived && movie.votesReceived.length > 0) {
       let total = 0
@@ -82,7 +66,6 @@ const MovieCard = (props: MovieCardProps): JSX.Element => {
       return
     }
   }
-  console.log({ avgScore }, "AVGSCORE")
 
   return (
     <div
@@ -106,13 +89,13 @@ const MovieCard = (props: MovieCardProps): JSX.Element => {
       {isEditing ? (
         <MovieForm movie={movie} onSubmit={handleSubmit} />
       ) : (
-        <div>
-          {/* <img src="./cinema.png" alt={`${movie.title}'s avatar`} /> */}
-          <h1>🎞️ {movie.title}</h1>
-          <h2>🍅 Rotten Tomato Score: {movie.rtScore}</h2>
+        <div className={styles.rtContainer}>
+          <img className={styles.imgSpot}src="./cinema.png" alt={`${movie.title}'s avatar`} />
+          <h1 className={styles.title}>🎞️ {movie.title}</h1>
+          <h2 className={styles.rtScore}>🍅 Rotten Tomato Score: {movie.rtScore}</h2>
+          <h2 className={styles.rpScore}>🥔 Ripe Potato Score: {avgScore}</h2>
         </div>
       )}
-      <h2>🥔 Ripe Potato Score: {avgScore}</h2>
       <VoteInput
         defaultValue={userScore}
         movieId={movie.id}

@@ -21,7 +21,7 @@ const Landing = (props: LandingProps): JSX.Element => {
       </div>
       <div className={styles.ABOUT}>
         <h1>Ripe Potato</h1>
-        <p>Culturally relevant, critically irrelevant</p>
+        <h2>Culturally relevant, critically irrelevant</h2>
       </div>
       <div className={styles.team}>
         <h1>TEAM</h1>

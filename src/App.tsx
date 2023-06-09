@@ -31,7 +31,6 @@ function App(): JSX.Element {
   const [profiles, setProfiles] = useState<Profile[]>([])
 
   useEffect((): void => {
-    console.log("USEEFFECT RAN", { user })
     const fetchProfiles = async (): Promise<void> => {
       try {
         const profileData: Profile[] = await profileService.getAllProfiles()
@@ -53,7 +52,6 @@ function App(): JSX.Element {
     setUser(authService.getUser())
   }
 
-  console.log("APP JS LOAD")
   return (
     <>
       <NavBar user={user} handleLogout={handleLogout} />
