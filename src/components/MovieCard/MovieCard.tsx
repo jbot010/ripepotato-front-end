@@ -14,10 +14,10 @@ import VoteInput from "./VoteInput"
 
 interface MovieCardProps {
   movie: Movie
-  user: User
+  user: User | null
   onSubmit: (formData: movieFormData) => void
   onDelete: (movieId: number) => Promise<void>
-  onSubmitVote: (value: number) => Promise<void>
+  onSubmitVote: (movieId: number | null, value: number) => Promise<void>
 }
 
 const MovieCard = (props: MovieCardProps): JSX.Element => {
@@ -31,7 +31,7 @@ const MovieCard = (props: MovieCardProps): JSX.Element => {
   }, [movie])
 
   const checkIfIsCurrentUser = () => {
-    return user.profile.id === movie.createdById
+    if (user) return user.profile.id === movie.createdById
   }
 
   const handleShowForm = () => {
@@ -54,7 +54,7 @@ const MovieCard = (props: MovieCardProps): JSX.Element => {
       let total = 0
 
       movie.votesReceived.forEach((voteObj) => {
-        if (voteObj.voterId === user.profile.id) {
+        if (voteObj.voterId === (user && user.profile.id)) {
           setUserScore(voteObj.value)
         }
         total = voteObj.value + total
@@ -90,15 +90,21 @@ const MovieCard = (props: MovieCardProps): JSX.Element => {
         <MovieForm movie={movie} onSubmit={handleSubmit} />
       ) : (
         <div className={styles.rtContainer}>
-          <img className={styles.imgSpot}src="./cinema.png" alt={`${movie.title}'s avatar`} />
+          <img
+            className={styles.imgSpot}
+            src="./cinema.png"
+            alt={`${movie.title}'s avatar`}
+          />
           <h1 className={styles.title}>🎞️ {movie.title}</h1>
-          <h2 className={styles.rtScore}>🍅 Rotten Tomato Score: {movie.rtScore}</h2>
+          <h2 className={styles.rtScore}>
+            🍅 Rotten Tomato Score: {movie.rtScore}
+          </h2>
           <h2 className={styles.rpScore}>🥔 Ripe Potato Score: {avgScore}</h2>
         </div>
       )}
       <VoteInput
         defaultValue={userScore}
-        movieId={movie.id}
+        movieId={movie.id || null}
         onSubmit={onSubmitVote}
       />
     </div>

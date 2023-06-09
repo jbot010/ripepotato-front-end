@@ -17,7 +17,7 @@ Culturally relevant, critically irrelevant.
 * [Decoupled MERN Stack with JWT Auth Template - Back End](https://github.com/SEI-Remote/decoupled-pern-jwt-auth-template-back-end-cjs)
 * [Ripe Potato Logo](https://www.brandcrowd.com/maker/logo/84315490-f703-4bb2-a8c4-dafe0b855354/draft/fc8a462f-0d25-42cc-8b08-0fbfef242b47)
 * [Cloudinary](https://cloudinary.com/)
-* [Profile Icons](https://www.flaticon.com/free-icon/fries_786943)
+* [Icons](https://www.flaticon.com/)
 
 
 ## Technologies used 💻

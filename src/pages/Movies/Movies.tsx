@@ -8,16 +8,16 @@ import MovieCard from "../../components/MovieCard/MovieCard"
 import MovieForm from "../../components/MovieForm/MovieForm"
 
 // types
-import { Movie, User, Vote } from "../../types/models"
+import { Movie, User } from "../../types/models"
 import { useState } from "react"
-import { movieFormData, voteFormData } from "../../types/forms"
+import { movieFormData } from "../../types/forms"
 
 // service
 import * as movieService from "../../services/movieService"
 import * as voteService from "../../services/voteService"
 
 interface MoviesProps {
-  user: User
+  user: User | null
 }
 
 const Movies = (props: MoviesProps): JSX.Element => {
@@ -70,29 +70,30 @@ const Movies = (props: MoviesProps): JSX.Element => {
     }
   }
 
-  const handleDeleteMovie = async (movieId: number): Promise<void> => {
+  const handleDeleteMovie = async (movieId: number | null): Promise<void> => {
     try {
-      await movieService.deleteMovie(movieId)
-      const nextMovies = movies.filter((movie) => movie.id !== movieId)
-      setMovies(nextMovies)
+      if (movieId) {
+        await movieService.deleteMovie(movieId)
+        const nextMovies = movies.filter((movie) => movie.id !== movieId)
+        setMovies(nextMovies)
+      }
     } catch (error) {
       console.log(error)
     }
   }
 
-  const handleUpdateVote = async (
-    movieId: number,
-    value: number
-  ): Promise<Movie> => {
+  const handleUpdateVote = async (movieId: number | null, value: number) => {
     try {
-      const resp = await voteService.castVote(value, movieId)
-      if (resp) {
-        const votedMovies = movies.map((movie) => {
-          if (movie.id === movieId) {
-            return resp
-          } else return movie
-        })
-        setMovies(votedMovies)
+      if (movieId) {
+        const resp = await voteService.castVote(value, movieId)
+        if (resp) {
+          const votedMovies: Movie[] = movies.map((movie) => {
+            if (movie.id === movieId) {
+              return resp
+            } else return movie
+          })
+          setMovies(votedMovies)
+        }
       }
     } catch (error) {
       console.log(error)

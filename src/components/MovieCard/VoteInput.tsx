@@ -8,8 +8,8 @@ import styles from "./MovieCard.module.css"
 
 interface VoteInputProps {
   defaultValue: number
-  onSubmit: (movieId: number, value: number) => void
-  movieId: number
+  onSubmit: (movieId: number | null, value: number) => void
+  movieId: number | null
 }
 
 const VoteInput = (props: VoteInputProps): JSX.Element => {
@@ -17,7 +17,6 @@ const VoteInput = (props: VoteInputProps): JSX.Element => {
 
   const [value, setValue] = useState<number>(defaultValue)
 
-  //onChange
   const handleChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
     setValue(parseInt(evt.target.value))
   }

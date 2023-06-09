@@ -2,12 +2,11 @@
 import * as tokenService from "./tokenService"
 
 // types
-import { Vote } from "../types/models"
-import { voteFormData } from "../types/forms"
+import { Movie } from "../types/models"
 
 const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}/api/votes`
 
-async function castVote(value: voteFormData, movieId: number): Promise<Vote> {
+async function castVote(value: number, movieId: number): Promise<Movie> {
   const body = { value, movieId }
   const res = await fetch(BASE_URL, {
     method: "PUT",
@@ -17,7 +16,7 @@ async function castVote(value: voteFormData, movieId: number): Promise<Vote> {
     },
     body: JSON.stringify(body),
   })
-  return (await res.json()) as Vote
+  return (await res.json()) as Movie
 }
 
 export { castVote }
